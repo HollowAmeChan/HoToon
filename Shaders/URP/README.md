@@ -1,3 +1,5 @@
 # URP Shaders
 
-This folder is reserved for future HoToon Universal Render Pipeline shader variants.
+This folder contains HoToon Universal Render Pipeline shader variants.
+
+- `HalfToonURP.shader` targets URP 17.

@@ -3,7 +3,8 @@
   "displayName": "HoToon",
   "version": "0.1.0",
   "unity": "2022.1",
-  "description": "Toon shader package for Unity. The current shader targets the Built-in Render Pipeline, with room reserved for future URP shaders.",
+  "hideInEditor": false,
+  "description": "Toon shader package for Unity. Includes Built-in Render Pipeline and URP shader variants without forcing render pipeline package dependencies.",
   "author": {
     "name": "Hollow"
   },
