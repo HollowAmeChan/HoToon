@@ -1,0 +1,16 @@
+{
+  "name": "com.hollow.hotoon",
+  "displayName": "HoToon",
+  "version": "0.1.0",
+  "unity": "2022.1",
+  "description": "Toon shader package for Unity. The current shader targets the Built-in Render Pipeline, with room reserved for future URP shaders.",
+  "author": {
+    "name": "Hollow"
+  },
+  "keywords": [
+    "toon",
+    "shader",
+    "built-in",
+    "urp"
+  ]
+}
