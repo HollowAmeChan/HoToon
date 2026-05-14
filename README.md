@@ -11,6 +11,7 @@ HoToon is a Unity package by Hollow for toon shaders.
 ## Contents
 
 - `Shaders/BuiltIn/HalfToon.shader` - current Built-in Render Pipeline toon shader
+- `Textures/` - halftone pattern textures imported as uncompressed point-sampled data textures
 - `Shaders/URP/` - reserved for future URP shader variants
 
 ## Installation
