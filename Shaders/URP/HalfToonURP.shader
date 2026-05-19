@@ -436,7 +436,7 @@ Shader "HoToon/URP/HalfToon_Outline"
                     pixelPos = floor(input.uv1 * _GlobalPixelSize + 0.5);
                 }
 
-                float halftoneCameraScale = GetHalftoneCameraScale(input.positionWS);
+                float halftoneCameraScale = (_PixelSpace < 0.5) ? GetHalftoneCameraScale(input.positionWS) : 1.0;
                 float halftone = SampleHalftone(pixelPos, halftoneCameraScale);
 
                 float atten = mainLightData.shadowAttenuation * mainLightData.distanceAttenuation;

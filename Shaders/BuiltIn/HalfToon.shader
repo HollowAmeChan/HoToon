@@ -485,7 +485,7 @@ Shader "HoToon/HalfToon_Outline"
                     pixelPos = floor(i.uv1 * _GlobalPixelSize + 0.5);
                 }
 
-                float halftoneCameraScale = GetHalftoneCameraScale(i.worldPos);
+                float halftoneCameraScale = (_PixelSpace < 0.5) ? GetHalftoneCameraScale(i.worldPos) : 1.0;
                 float Halftone = SampleHalftone(pixelPos, halftoneCameraScale);
 
                 // shadow
