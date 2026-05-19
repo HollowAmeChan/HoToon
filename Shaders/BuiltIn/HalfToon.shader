@@ -21,8 +21,8 @@ Shader "HoToon/HalfToon_Outline"
         [Toggle] _HalftoneCameraScale ("启用相机缩放", Float) = 0
         _HalftoneCameraRefDistance ("参考距离", Range(0.01,50)) = 2
         _HalftoneCameraScaleStrength ("距离缩放强度", Range(0,1)) = 1
-        _HalftoneCameraScaleMin ("远处缩放下限", Range(0.05,1)) = 0.25
-        _HalftoneCameraScaleMax ("近处缩放上限", Range(1,8)) = 4
+        _HalftoneCameraScaleMin ("缩放下限", Range(0.05,1)) = 0.25
+        _HalftoneCameraScaleMax ("缩放上限", Range(1,8)) = 4
         [Space]
         [Enum(Screen,0,ObjSpaceTriplanar,1,UVLightMap,2,UV0,3,UV1,4)] _PixelSpace ("像素空间", Float) = 1
         _GlobalPixelSize ("全局像素尺寸", Range(1,8192)) = 8192
@@ -352,11 +352,13 @@ Shader "HoToon/HalfToon_Outline"
             }
 
             
-            float GetHalftoneCameraScale(float3 worldPos)
+            float GetHalftoneCameraScale(float3 worldPos, float screenSpaceMode)
             {
                 float cameraDistance = max(distance(_WorldSpaceCameraPos, worldPos), 1e-4);
                 float referenceDistance = max(_HalftoneCameraRefDistance, 1e-4);
-                float rawScale = referenceDistance / cameraDistance;
+                float keepScreenSizeScale = referenceDistance / cameraDistance;
+                float mimicSurfaceScale = cameraDistance / referenceDistance;
+                float rawScale = lerp(keepScreenSizeScale, mimicSurfaceScale, screenSpaceMode);
                 float minScale = min(_HalftoneCameraScaleMin, _HalftoneCameraScaleMax);
                 float maxScale = max(_HalftoneCameraScaleMin, _HalftoneCameraScaleMax);
                 float clampedScale = clamp(rawScale, minScale, maxScale);
@@ -485,7 +487,7 @@ Shader "HoToon/HalfToon_Outline"
                     pixelPos = floor(i.uv1 * _GlobalPixelSize + 0.5);
                 }
 
-                float halftoneCameraScale = (_PixelSpace < 0.5) ? GetHalftoneCameraScale(i.worldPos) : 1.0;
+                float halftoneCameraScale = GetHalftoneCameraScale(i.worldPos, (_PixelSpace < 0.5) ? 1.0 : 0.0);
                 float Halftone = SampleHalftone(pixelPos, halftoneCameraScale);
 
                 // shadow
