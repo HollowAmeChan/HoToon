@@ -1,6 +1,8 @@
 # HoToon
 
-HoToon 是 Hollow 的轻量级 Unity toon shader 包。它被刻意保持成一个小而独立的包，可以和更大的 lilToon/lilPBR 系统一起使用，也可以单独用于只需要半调、描边和基础风格化光照的项目。
+HoToon 是 Hollow 的轻量级 Unity toon shader 包。它被刻意保持成一个小而独立的历史参考包，也可以单独用于只需要半调、描边和基础风格化光照的项目。新的 HoRP 统一材质系统不在这里展开，后续主线放在 `HoNpr`。
+
+当前 `HoToon` 的 URP 半调 shader、半调贴图和导入工具已经迁入 `HoNpr`，作为 `HoNpr` 内部的 `HoToon` 小模块维护。这个仓库后续主要保留 Built-in 版本和历史参考价值。
 
 ## 在整套系统里的定位
 
@@ -10,7 +12,8 @@ HoToon 是根目录这组仓库里的轻量半调 toon shader 包。适合在项
 
 - `HoUrp17.3.0`：URP 17 本地包，供 URP shader 变体使用。
 - `lilToon-URP-Extensions`：更完整的 URP RendererFeature 功能层。
-- `lilToon` / `lilPBR`：生产级角色/NPR 与场景/PBR shader 家族。
+- `HoNpr`：未来统一 HoRP 材质系统承载仓库。
+- `lilToon` / `lilPBR`：旧材质能力来源和迁移参照。
 
 ## 主要内容
 
